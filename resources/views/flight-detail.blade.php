@@ -56,7 +56,7 @@
                                              @endforeach
                                         </div>
                                         <div class="col-sm-3 text-right">
-                                            <h3 class="price text-danger"><strong>IDR {{$flightdetail->fl_cost}}</strong></h3>
+                                            <h3 class="price text-danger"><strong>IDR {{$cost}}</strong></h3>
                                             <div>
                                                 <a href="{{route('flight-book')}}" class="btn btn-primary">Choose</a>
                                             </div>
@@ -211,7 +211,7 @@
                                                         <strong>Passengers Fare (x3)</strong>
                                                     </div>
                                                     <div class="pull-right">
-                                                        <strong>IDR {{$flightdetail->fl_cost*3 }}</strong>
+                                                        <strong>IDR {{$cost*3 }}</strong>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </li>
@@ -229,7 +229,7 @@
                                                         <strong>You Pay</strong>
                                                     </div>
                                                     <div class="pull-right">
-                                                        <strong>IDR {{$flightdetail->fl_cost*3 }}</strong>
+                                                        <strong>IDR {{$cost*3 }}</strong>
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </li>

@@ -33,7 +33,7 @@ class CreateFlightController extends Controller
             'return_day' => 'required',
             'landing' => 'required',
             'flight_class' => 'required',
-            'cost' => 'required|numeric',
+            'km' => 'required|numeric',
         ],
             [
                 'total_person.required'=>'Total person không được bỏ trống',
@@ -42,8 +42,8 @@ class CreateFlightController extends Controller
                 'departure.required'=>'Departure không được bỏ trống',
                 'return_day.required'=>'Return không được bỏ trống',
                 'landing.required'=>'Landing không được bỏ trống',
-                'cost.required'=>'Cost không được bỏ trống',
-                'cost.numeric'=>'Cost person phải là số',
+                'km.required'=>'KM không được bỏ trống',
+                'km.numeric'=>'KM person phải là số',
             ]);
         if($validator->fails()){
             return redirect()->route('flight_infor')->withErrors($validator)->withInput();

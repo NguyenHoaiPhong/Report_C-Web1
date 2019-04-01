@@ -13,6 +13,7 @@ use App\Http\Models\City;
 use App\Http\Models\FlightClass;
 use App\Http\Models\FlightList;
 use App\Http\Models\Transit;
+use Illuminate\Http\Request;
 
 class FlightDetailController
 {
@@ -28,6 +29,8 @@ class FlightDetailController
 
         $transits = Transit::getTransitByFL_ID($fl_id);
 
-        return view('flight-detail', compact('flightdetails', 'citylists', 'flightclasses', 'transits', 'countStansit'));
+        $cost = FlightList::getCost();
+
+        return view('flight-detail', compact('flightdetails', 'citylists', 'flightclasses', 'transits', 'countStansit', 'cost'));
     }
 }

@@ -8,6 +8,8 @@
 namespace App\Http\Models;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
+
 class FlightList extends Model{
     protected $table = 'flight_list';
     protected $primaryKey = 'fl_id';
@@ -20,6 +22,7 @@ class FlightList extends Model{
         ])
             ->join('airlines', 'flight_list.fl_airline_id', '=', 'airlines.airline_id')
             ->first();
+        Session::put('form_departure', $data['departure']);
     }
 
     public static function updateTotalPerson($data, $total){
@@ -54,7 +57,7 @@ class FlightList extends Model{
             'fl_airline_id'=>$data['air'],
             'fl_code'=>$data['code'],
             'fl_total'=>$data['total_person'],
-            'fl_cost'=>$data['cost'],
+            'fl_km'=>$data['km'],
             'fl_city_from_id'=>$data['from'],
             'fl_city_to_id'=>$data['to'],
             'fl_departure_date'=>$data['departure'],
@@ -101,7 +104,55 @@ class FlightList extends Model{
         return false;
     }
 
+    public static function getCost() {
+        $flightlists = FlightList::all();
+        //calculate cost
+        $fdepart = strtotime(Session::get('form_departure'));
 
+        foreach ($flightlists as $flightlist)
+            $departure = strtotime($flightlist->fl_departure_date);
+            $f = $flightlist->fl_km;
+
+        $cost = 0;
+        $totals = 0;
+
+        $s = abs($departure - $fdepart);
+        $d = abs(round($s / 86400));
+
+        if (0 <= $f && $f <= 100) {
+            $cost = 500000;
+        } else if (101 <= $f && $f <= 200) {
+            $cost = 1000000;
+        } else if (201 <= $f && $f <= 500) {
+            $cost = 2000000;
+        } else if (501 <= $f && $f <= 1000) {
+            $cost = 3000000;
+        } else if (1001 <= $f && $f <= 2000) {
+            $cost = 6000000;
+        } else if (2001 <= $f && $f <= 5000) {
+            $cost = 20000000;
+        } else if ($f >= 5001) {
+            $cost = 30000000;
+        } else {
+            return $cost;
+        }
+
+        if ($d >= 60) {
+            $totals = $cost - ($cost * 0.1);
+        } else if ($d >= 30) {
+            $totals = $cost - ($cost * 0.05);
+        } else if ($d >= 14) {
+            $totals = $cost + ($cost * 0.1);
+        } else if ($d >= 7) {
+            $totals = $cost + ($cost * 0.2);
+        } else if ($d >= 1) {
+            $totals = $cost + ($cost * 0.5);
+        } else {
+            return -1;
+        }
+
+        return $totals;
+    }
 
 
 

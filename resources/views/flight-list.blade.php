@@ -52,7 +52,7 @@
                                                 @endforeach
                                             </div>
                                             <div class="col-sm-3 text-right">
-                                                <h3 class="price text-danger"><strong>IDR {{$flightlist->fl_cost}}</strong></h3>
+                                                <h3 class="price text-danger"><strong>IDR {{$cost}}</strong></h3>
 
                                                 <div>
                                                     <a href="{{ route('flight-detail', ['fl_id'=>$flightlist->fl_id]) }}" class="btn btn-link">See Detail</a>

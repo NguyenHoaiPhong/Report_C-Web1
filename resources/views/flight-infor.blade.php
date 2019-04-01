@@ -97,8 +97,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label">Cost: </label>
-                                        <input id="cost" name="cost" type="text" class="form-control" placeholder="Input total person">
+                                        <label class="control-label">KM: </label>
+                                        <input id="km" name="km" type="text" class="form-control" placeholder="Input total person">
                                         @if($errors->has('cost'))
                                             <p style="color:red">{{$errors->first('cost')}}</p>
                                         @endif
