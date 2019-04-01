@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 01, 2019 at 09:09 AM
+-- Generation Time: Apr 01, 2019 at 03:46 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `flight_list` (
   `fl_airline_id` int(11) DEFAULT NULL,
   `fl_code` varchar(15) CHARACTER SET utf8 NOT NULL,
   `fl_total` int(11) DEFAULT NULL,
-  `fl_cost` float DEFAULT NULL,
+  `fl_km` float DEFAULT NULL,
   `fl_city_from_id` int(11) DEFAULT NULL,
   `fl_city_to_id` int(11) DEFAULT NULL,
   `fl_departure_date` datetime DEFAULT NULL,
@@ -187,21 +187,22 @@ CREATE TABLE IF NOT EXISTS `flight_list` (
   `fl_return_date` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`fl_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `flight_list`
 --
 
-INSERT INTO `flight_list` (`fl_id`, `fl_fc_id`, `fl_airline_id`, `fl_code`, `fl_total`, `fl_cost`, `fl_city_from_id`, `fl_city_to_id`, `fl_departure_date`, `fl_landing_date`, `fl_return_date`, `updated_at`) VALUES
-(1, 2, 1, 'VVCS/VCS', 100, 1500000, 1, 2, '2019-03-06 06:00:00', '2019-03-06 12:00:00', '2019-03-08 09:00:00', '2019-03-19 09:52:13'),
-(2, 2, 2, 'VVCT/VCA', 150, 800000, 1, 3, '2019-03-07 07:20:00', '2019-03-08 10:00:00', '2019-03-10 08:08:00', NULL),
-(3, 3, 3, 'VVTS/SGN', 200, 500000, 2, 3, '2019-03-06 10:20:00', '2019-03-07 06:00:00', '2019-03-11 08:00:00', NULL),
-(4, 2, 1, 'test', 1, 1, 1, 1, '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', NULL),
-(5, 2, 1, 'test1', 10, 10000, 1, 4, '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', NULL),
-(6, 1, 3, 'test1', 1, 1, 1, 2, '2019-03-29 00:00:00', '2019-03-14 00:00:00', '2019-03-28 00:00:00', NULL),
-(7, 3, 1, 'test1', 10, 10000, 1, 2, '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', NULL),
-(8, 1, 1, 'test3', 1, 1, 1, 4, '2019-03-15 00:00:00', '2019-03-21 00:00:00', '2019-03-21 00:00:00', NULL);
+INSERT INTO `flight_list` (`fl_id`, `fl_fc_id`, `fl_airline_id`, `fl_code`, `fl_total`, `fl_km`, `fl_city_from_id`, `fl_city_to_id`, `fl_departure_date`, `fl_landing_date`, `fl_return_date`, `updated_at`) VALUES
+(1, 2, 1, 'VVCS/VCS', 100, 1500, 1, 2, '2019-03-06 06:00:00', '2019-03-06 12:00:00', '2019-03-08 09:00:00', '2019-03-19 09:52:13'),
+(2, 2, 2, 'VVCT/VCA', 150, 80, 1, 3, '2019-03-07 07:20:00', '2019-03-08 10:00:00', '2019-03-10 08:08:00', NULL),
+(3, 3, 3, 'VVTS/SGN', 200, 500, 2, 3, '2019-03-06 10:20:00', '2019-03-07 06:00:00', '2019-03-11 08:00:00', NULL),
+(4, 2, 1, 'test', 1, 1000, 1, 1, '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', NULL),
+(5, 2, 1, 'test1', 10, 1200, 1, 4, '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', NULL),
+(6, 1, 3, 'test1', 1, 15000, 1, 2, '2019-03-29 00:00:00', '2019-03-14 00:00:00', '2019-03-28 00:00:00', NULL),
+(7, 3, 1, 'test1', 5, 10000, 1, 2, '2019-04-02 00:00:00', '2019-03-29 00:00:00', '2019-03-29 00:00:00', '2019-04-01 15:39:56'),
+(8, 1, 1, 'test3', 1, 2000, 1, 4, '2019-03-15 00:00:00', '2019-03-21 00:00:00', '2019-03-21 00:00:00', NULL),
+(9, 1, 1, 'test', 5, 1000, 1, 2, '2019-04-01 00:00:00', '2019-04-02 00:00:00', '2019-04-03 00:00:00', '2019-04-01 15:39:56');
 
 -- --------------------------------------------------------
 
