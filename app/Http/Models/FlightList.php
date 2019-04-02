@@ -23,6 +23,7 @@ class FlightList extends Model{
             ->join('airlines', 'flight_list.fl_airline_id', '=', 'airlines.airline_id')
             ->first();
         Session::put('form_departure', $data['departure']);
+		
     }
 
     public static function updateTotalPerson($data, $total){

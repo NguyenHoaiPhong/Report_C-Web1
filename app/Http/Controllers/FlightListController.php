@@ -38,7 +38,6 @@ class FlightListController extends Controller
         }
 
         $cost = FlightList::getCost();
-
         return view('flight-list', compact('flightlist', 'citylists', 'countStansit', 'cost'));
     }
 

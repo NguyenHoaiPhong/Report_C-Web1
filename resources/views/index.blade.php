@@ -13,8 +13,6 @@
                                     <div class="form-group">
                                         <label class="control-label">From: </label>
                                         <select class="form-control" name="from" id="from">
-                                            <option value="1">TP. Hồ Chí Minh (SGN)</option>
-                                            <option value="2">Hà Nội (HAN)</option>
                                             @foreach ($cities as $city)
                                                 <option value="<?php echo $city['city_id'];?>"><?php echo $city['city_name']. " (" .$city['city_code'] . ")"; ?></option>
                                             @endforeach
